@@ -18,7 +18,7 @@ Some of these tricks are quite obvious (I've been using a few of them for quite 
 
 - `15.67>>0` will truncate the decimal
 - `~i` will test for indicies `+n` to `0`, anything below `0` will be falsey
-- `%` use the modulo operator to shorten arithmetic iterations
+- `%` use the modulo operator to shorten arithmetic calculations
 - `#f00` use shorthand hexidecimals
 - `red` use colour name if it's shorter than shorthand hexidecimal
 - `function(f) { setTimeout(f, 16.66); }` use this for requestAnimationFrame (inline it if only using once)
