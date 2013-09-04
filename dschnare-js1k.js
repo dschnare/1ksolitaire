@@ -52,11 +52,15 @@ function m() {
 	// Handle mouse up
 	c.addEventListener('mouseup', function (e) {
 		var 
-		c, 
-		mx = e.offsetX || e.layerX,
-		my = e.offsetY || e.layerY,
-		cx, cy
+		cc, 
+		mx = e.clientX,
+		my = e.clientY,
+		cx, cy,
+		r = c.getBoundingClientRect()
 		clicked = 0
+		
+		mx -= r.left;
+		my -= r.top;
 
 		function check() {
 			return mx >= cx && mx <= cx + cardW && my >= cy && my <= cy + cardH
@@ -65,15 +69,15 @@ function m() {
 		// Check for a click on a card in the playing field
 		for (i = 6; ~i; i--) {
 			for (k = stacks[i].length-1; ~k; k--) {
-				c = stacks[i][k]
+				cc = stacks[i][k]
 				cx = cardHSpace * i
 				cy = top + k * cardVSpace
 				
 				// If card is face down then break
-				if (!c[3]) break
+				if (!cc[3]) break
 				
 				if (check()) {
-					return clicked = [c, stacks[i], k]
+					return clicked = [cc, stacks[i], k]
 				}
 			}
 		}
@@ -89,9 +93,9 @@ function m() {
 		cx = cardHSpace * 7
 		cy = 0
 		k = discard.length - 1
-		c = discard[k]
+		cc = discard[k]
 		if (check()) {
-			clicked = [c, discard, k]
+			clicked = [cc, discard, k]
 		}
 	})
 
